@@ -23,8 +23,8 @@ emrCostPerRunRaw <- function(instancesHours){
 # Calculate the number of instance (m1small) hours required to process X lines of data
 emrInstanceHoursRequired <- function(linesToProcess){
 	# Following figures based on a regression analysis of job time vs number of lines processed
-	intercept <- 3.689e-06
-	gradient <- 3.788e-01
+	intercept <- 3.788e-01
+	gradient <-  3.689e-06
 	instanceHoursRequired <- linesToProcess * gradient + intercept
 
 	# Now round up to nearest whole number
