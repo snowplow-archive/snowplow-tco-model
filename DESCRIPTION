@@ -1,0 +1,7 @@
+Package: snowplowtcomodel
+Title: Model to forecast Amazon fees resulting from running Snowplow over time
+Version: 0.1
+Author: Yali Sassoon <yali@snowplowanalytics.com>
+Maintainer: Yali Sassoon <yali@snowplowanalytics.com>
+Description: Model Snowplow costs based on the number of uniques and events tracked, and your particular Snowplow setup (e.g. Redshift vs PostgreSQL).
+License: Apache 2
