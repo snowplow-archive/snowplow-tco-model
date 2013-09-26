@@ -30,13 +30,6 @@ Using the package is straightforward, you simply call the `snowplowCostByMonth` 
 
 The `snowplowCostByMonth` function takes the following arguments, all of which **must** be supplied:
 
-#' @param uniquesPerMonth The number of unique visitors to website(s) per month (integer)
-#' @param eventsPerMonth The number of events per month tracked (integer)
-#' @param runsPerDay The number of times per day that enrichment process is run (generally 1-24) (integer)
-#' @param storageDatabase The type of database used to store Snowplow data. This *MUST* either be 'redshift' or 'postgres'
-#' @param numberOfMonths number of months ahead that the model should project costs (e.g. 12 or 36)
-#' @param edgeLocations The number of different locations in Amazon's Cloudfront network that each generate an independent log when hit. We believe this number is between 10000 and 100000, but are not sure. (This has an impact on S3 costs)
-
 | ** Argument ** | ** Description ** |
 |:---------------|:------------------|
 | uniquesPerMonth| The number of uniques tracked per month [type: integer] |
@@ -48,4 +41,25 @@ The `snowplowCostByMonth` function takes the following arguments, all of which *
 
 For example, to find out how much Snowplow would cost for a user with 800k uniques per month, 5M events per month who uses PostgreSQL to store the data, we would run:
 
-	> costModel <- snowplowCostByMonth(800000, 5000000, )
+	> costModel <- snowplowCostByMonth(800000, 5000000, 1, 'postgres', 12, 10000)
+
+We can view the data frame:
+
+	> costModel
+	   cloudfrontCost   s3Cost  emrCost databaseCost totalCost
+	1        7.445363 58.70977 142051.5     62.15856  142179.8
+	2        7.445363 61.63339 142051.5     62.15856  142182.7
+	3        7.445363 64.54118 142051.5     62.15856  142185.6
+	4        7.445363 67.43705 142051.5     62.15856  142188.5
+	5        7.445363 70.37367 142051.5     62.15856  142191.5
+	6        7.445363 73.28576 142051.5     62.15856  142194.4
+	7        7.445363 76.18362 142051.5     62.15856  142197.3
+	8        7.445363 79.10368 142051.5     62.15856  142200.2
+	9        7.445363 81.99807 142051.5     62.15856  142203.1
+	10       7.445363 84.95357 142051.5     62.15856  142206.1
+	11       7.445363 87.86395 142051.5     62.15856  142209.0
+	12       7.445363 90.76076 142051.5     62.15856  142211.9
+
+And plot it over time:
+
+	> library("ggplot2")
