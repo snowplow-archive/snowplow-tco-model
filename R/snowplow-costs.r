@@ -10,7 +10,8 @@
 #' @export
 snowplowCostByMonth <- function(uniquesPerMonth, eventsPerMonth, runsPerDay, storageDatabase, numberOfMonths, edgeLocations){
 	
-	month <- seq(1, numberOfMonths, b=1)
+	month <- seq(1, numberOfMonths, by=1)
+	
 	# Snowplow cost is made up of Cloudfront, S3, EMR and database (Redshift / storage) costs
 	cloudfrontCost <- cfCostPerMonth(eventsPerMonth, uniquesPerMonth)
 	s3Cost <- s3CostByMonth(eventsPerMonth, runsPerDay, edgeLocations, numberOfMonths)
