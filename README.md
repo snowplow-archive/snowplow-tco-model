@@ -46,20 +46,33 @@ For example, to find out how much Snowplow would cost for a user with 800k uniqu
 We can view the data frame:
 
 	> costModel
-	   cloudfrontCost   s3Cost  emrCost databaseCost totalCost
-	1        7.445363 58.70977 142051.5     62.15856  142179.8
-	2        7.445363 61.63339 142051.5     62.15856  142182.7
-	3        7.445363 64.54118 142051.5     62.15856  142185.6
-	4        7.445363 67.43705 142051.5     62.15856  142188.5
-	5        7.445363 70.37367 142051.5     62.15856  142191.5
-	6        7.445363 73.28576 142051.5     62.15856  142194.4
-	7        7.445363 76.18362 142051.5     62.15856  142197.3
-	8        7.445363 79.10368 142051.5     62.15856  142200.2
-	9        7.445363 81.99807 142051.5     62.15856  142203.1
-	10       7.445363 84.95357 142051.5     62.15856  142206.1
-	11       7.445363 87.86395 142051.5     62.15856  142209.0
-	12       7.445363 90.76076 142051.5     62.15856  142211.9
+	   month cloudfrontCost   s3Cost emrCost databaseCost totalCost
+	1      1       7.445363 58.70569    2.25     62.15856  130.5596
+	2      2       7.445363 61.62843    2.25     62.15856  133.4823
+	3      3       7.445363 64.55513    2.25     62.15856  136.4091
+	4      4       7.445363 67.44618    2.25     62.15856  139.3001
+	5      5       7.445363 70.37689    2.25     62.15856  142.2308
+	6      6       7.445363 73.27102    2.25     62.15856  145.1249
+	7      7       7.445363 76.18774    2.25     62.15856  148.0417
+	8      8       7.445363 79.11249    2.25     62.15856  150.9664
+	9      9       7.445363 82.02895    2.25     62.15856  153.8829
+	10    10       7.445363 84.96548    2.25     62.15856  156.8194
+	11    11       7.445363 87.85867    2.25     62.15856  159.7126
+	12    12       7.445363 90.80062    2.25     62.15856  162.6545
 
-And plot it over time:
 
-	> library("ggplot2")
+We can now manipulate and visualize the data. For example, say we want to plot a stacked barchart of our different costs by month:
+	
+	> costs <- costModel[c(1:5)] # Create a data frame without the totalCost field
+
+	> library("reshape")
+	> costs <- melt(costs, id="month") # Melt the data
+
+	> library("ggplot2") # Now we can plot our stacked bar
+	> p <- ggplot(costs, aes(x=month, y=value, fill=variable))
+	> p <- p + geom_bar(stat="identity")
+	> p
+
+The basic graph looks like this:
+
+![Example graph](example-visualization.png)

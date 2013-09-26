@@ -9,6 +9,8 @@
 #'
 #' @export
 snowplowCostByMonth <- function(uniquesPerMonth, eventsPerMonth, runsPerDay, storageDatabase, numberOfMonths, edgeLocations){
+	
+	month <- seq(1, numberOfMonths, b=1)
 	# Snowplow cost is made up of Cloudfront, S3, EMR and database (Redshift / storage) costs
 	cloudfrontCost <- cfCostPerMonth(eventsPerMonth, uniquesPerMonth)
 	s3Cost <- s3CostByMonth(eventsPerMonth, runsPerDay, edgeLocations, numberOfMonths)
@@ -16,7 +18,7 @@ snowplowCostByMonth <- function(uniquesPerMonth, eventsPerMonth, runsPerDay, sto
 	databaseCost <- databaseCostByMonth(storageDatabase, eventsPerMonth, numberOfMonths)
 
 	# Combine above 4 costs in a single data frame:
-	snowplowCost <- data.frame(cloudfrontCost, s3Cost, emrCost, databaseCost)
+	snowplowCost <- data.frame(month, cloudfrontCost, s3Cost, emrCost, databaseCost)
 	snowplowCost$totalCost <- snowplowCost$cloudfrontCost + snowplowCost$s3Cost + snowplowCost$emrCost + snowplowCost$databaseCost
 
 	# Now return the completed data frame
