@@ -3,5 +3,15 @@ Title: Model to forecast Amazon fees resulting from running Snowplow over time
 Version: 0.1
 Author: Yali Sassoon <yali@snowplowanalytics.com>
 Maintainer: Yali Sassoon <yali@snowplowanalytics.com>
-Description: Model Snowplow costs based on the number of uniques and events tracked, and your particular Snowplow setup (e.g. Redshift vs PostgreSQL).
+Description: Model Snowplow costs based on the number of uniques and events
+    tracked, and your particular Snowplow setup (e.g. Redshift vs PostgreSQL).
 License: Apache 2
+Collate:
+    'cloudfront-costs.r'
+    'database-costs.r'
+    'emr-costs.r'
+    'helper-functions.r'
+    's3-cf-log-costs.r'
+    's3-costs.r'
+    's3-snowplow-event-files-costs.r'
+    'snowplow-costs.r'
