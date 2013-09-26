@@ -1,8 +1,9 @@
 #' Calculate the total Amazon costs associated with running Snowplow X months ahead
 #'
-#' @param uniquesPerMonth number of unique visitors to website(s) per month
-#' @param eventsPerMonth number of events per month tracked
-#' @param runsPerDay number of times per day that enrichment process is run (generally 1-24)
+#' @param uniquesPerMonth The number of unique visitors to website(s) per month (integer)
+#' @param eventsPerMonth The number of events per month tracked (integer)
+#' @param runsPerDay The number of times per day that enrichment process is run (generally 1-24) (integer)
+#' @param storageDatabase The type of database used to store Snowplow data. This *MUST* either be 'redshift' or 'postgres'
 #' @param numberOfMonths number of months ahead that the model should project costs (e.g. 12 or 36)
 #' @param edgeLocations The number of different locations in Amazon's Cloudfront network that each generate an independent log when hit. We believe this number is between 10000 and 100000, but are not sure. (This has an impact on S3 costs)
 #'
