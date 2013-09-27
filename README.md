@@ -1,11 +1,19 @@
 # The Snowplow Total Cost of Ownership (TCO) Model 
 
-`snowplowtcomodel` is a package for estimating the Amazon fees associated with running Snowplow.
+`snowplowtcomodel` is an R package for estimating the [Amazon Web Service] [aws] fees associated with running Snowplow.
 
 The model is a work in progress: 
 
 1. We've made a number of simplifying asumptions (see the next section). Over time, we'll evolve the model to enable people to flex those assumptions
 2. The model is very "raw" - you simply execute a function in R to forecast prices, and then use other R functionality (e.g. ggplot2) to plot the costs over time.
+
+## Further reading
+
+Please see the following blog posts on the Snowplow website:
+
+* [Unpicking the Snowplow data pipeline and how it drives AWS costs] [tco-blog1]
+* [How much does Snowplow cost to run, vs the competition?] [tco-blog1]
+* _More blog posts coming soon_
 
 ## Assumptions
 
@@ -76,3 +84,29 @@ We can now manipulate and visualize the data. For example, say we want to plot a
 The basic graph looks like this:
 
 ![Example graph](example-visualization.png)
+
+## Questions or need help?
+
+Check out the **[Talk to us] [talk-to-us]** page on our wiki.
+
+## Copyright and license
+
+The Snowplow Total Cost of Ownership (TCO) Model is
+copyright 2013 Snowplow Analytics Ltd.
+
+Licensed under the **[Apache License, Version 2.0] [license]** (the "License");
+you may not use this software except in compliance with the License.
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+[aws]: http://aws.amazon.com/
+
+[tco-blog1]: http://snowplowanalytics.com/blog/2013/07/09/understanding-how-different-parts-of-the-Snowplow-data-pipeline-drive-AWS-costs/
+[tco-blog2]: http://snowplowanalytics.com/blog/2013/09/27/how-much-does-snowplow-cost-to-run/
+
+[talk-to-us]: https://github.com/snowplow/snowplow/wiki/Talk-to-us
+[license]: http://www.apache.org/licenses/LICENSE-2.0
