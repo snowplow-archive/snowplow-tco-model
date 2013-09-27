@@ -1,6 +1,6 @@
 # The Snowplow TCO Model 
 
-The Snowplow Total Cost of Ownership (TCO) Model, aka `snowplowtcomodel`, is an R package for estimating the [Amazon Web Service] [aws] fees associated with running Snowplow.
+The Snowplow Total Cost of Ownership (TCO) Model, aka `snowplowtcomodel`, is an R package for estimating the **[Amazon Web Service] [aws]** fees associated with running Snowplow.
 
 The model is a work in progress: 
 
@@ -11,8 +11,8 @@ The model is a work in progress:
 
 Please see the following blog posts on the Snowplow website:
 
-* [Unpicking the Snowplow data pipeline and how it drives AWS costs] [tco-blog1]
-* [How much does Snowplow cost to run, vs the competition?] [tco-blog1]
+* **[Unpicking the Snowplow data pipeline and how it drives AWS costs] [tco-blog1]**
+* **[How much does Snowplow cost to run, vs the competition?] [tco-blog1]**
 * _More blog posts coming soon_
 
 ## Assumptions
