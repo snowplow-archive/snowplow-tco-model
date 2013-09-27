@@ -9,7 +9,7 @@ The model is a work in progress:
 
 ## Further reading
 
-Please see the following blog posts on the Snowplow website:
+Please see the following blog posts for more on the Snowplow TCO Model:
 
 * **[Unpicking the Snowplow data pipeline and how it drives AWS costs] [tco-blog1]**
 * **[How much does Snowplow cost to run, vs the competition?] [tco-blog1]**
