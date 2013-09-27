@@ -32,6 +32,15 @@ You can install the package directly from Github, via `dev_tools`
 	> install_github("snowplow-tco-model", "snowplow")
 	> library("snowplowtcomodel")
 
+Alternatively, you may prefer to download the source code from Github, and load it locally:
+
+	$ git clone git@github.com:snowplow/snowplow-tco-model.git
+	$ cd snowplow-tco-model
+	$ R
+	> library("devtools")
+	> load_all()
+
+
 ## Using the package
 
 Using the package is straightforward, you simply call the `snowplowCostByMonth` function. 
