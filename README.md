@@ -58,37 +58,42 @@ The `snowplowCostByMonth` function takes the following arguments, all of which *
 
 For example, to find out how much Snowplow would cost for a user with 800k uniques per month, 5M events per month who uses PostgreSQL to store the data, we would run:
 
-	> costModel <- snowplowCostByMonth(800000, 5000000, 1, 'postgres', 12, 10000)
+```r
+> costModel <- snowplowCostByMonth(800000, 5000000, 1, 'postgres', 12, 10000)
+```
 
 We can view the data frame:
 
-	> costModel
-	   month cloudfrontCost   s3Cost emrCost databaseCost totalCost
-	1      1       7.445363 58.70569    2.25     62.15856  130.5596
-	2      2       7.445363 61.62843    2.25     62.15856  133.4823
-	3      3       7.445363 64.55513    2.25     62.15856  136.4091
-	4      4       7.445363 67.44618    2.25     62.15856  139.3001
-	5      5       7.445363 70.37689    2.25     62.15856  142.2308
-	6      6       7.445363 73.27102    2.25     62.15856  145.1249
-	7      7       7.445363 76.18774    2.25     62.15856  148.0417
-	8      8       7.445363 79.11249    2.25     62.15856  150.9664
-	9      9       7.445363 82.02895    2.25     62.15856  153.8829
-	10    10       7.445363 84.96548    2.25     62.15856  156.8194
-	11    11       7.445363 87.85867    2.25     62.15856  159.7126
-	12    12       7.445363 90.80062    2.25     62.15856  162.6545
-
+```r
+> costModel
+   month cloudfrontCost   s3Cost emrCost databaseCost totalCost
+1      1       7.445363 58.70569    2.25     62.15856  130.5596
+2      2       7.445363 61.62843    2.25     62.15856  133.4823
+3      3       7.445363 64.55513    2.25     62.15856  136.4091
+4      4       7.445363 67.44618    2.25     62.15856  139.3001
+5      5       7.445363 70.37689    2.25     62.15856  142.2308
+6      6       7.445363 73.27102    2.25     62.15856  145.1249
+7      7       7.445363 76.18774    2.25     62.15856  148.0417
+8      8       7.445363 79.11249    2.25     62.15856  150.9664
+9      9       7.445363 82.02895    2.25     62.15856  153.8829
+10    10       7.445363 84.96548    2.25     62.15856  156.8194
+11    11       7.445363 87.85867    2.25     62.15856  159.7126
+12    12       7.445363 90.80062    2.25     62.15856  162.6545
+```
 
 We can now manipulate and visualize the data. For example, say we want to plot a stacked barchart of our different costs by month:
-	
-	> costs <- costModel[c(1:5)] # Create a data frame without the totalCost field
 
-	> library("reshape")
-	> costs <- melt(costs, id="month") # Melt the data
+```r	
+> costs <- costModel[c(1:5)] # Create a data frame without the totalCost field
 
-	> library("ggplot2") # Now we can plot our stacked bar
-	> p <- ggplot(costs, aes(x=month, y=value, fill=variable))
-	> p <- p + geom_bar(stat="identity")
-	> p
+> library("reshape")
+> costs <- melt(costs, id="month") # Melt the data
+
+> library("ggplot2") # Now we can plot our stacked bar
+> p <- ggplot(costs, aes(x=month, y=value, fill=variable))
+> p <- p + geom_bar(stat="identity")
+> p
+```
 
 The basic graph looks like this:
 
