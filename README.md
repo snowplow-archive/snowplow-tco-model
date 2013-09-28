@@ -20,8 +20,8 @@ Please see the following blog posts for more on the Snowplow TCO Model:
 A number of simplifying assumptions have been made:
 
 * All visitors tracked are located in the US (relevant when modelling Cloudfront costs)
-* All AWS services used are setup in the US-East-1 region (the price of each AWS service varies by regio.)
-* The CloudFront Collector is used (rather than the Clojure Collector). These reduces EC2 and EBS costs, but increases S3 costs, because it generates a larger number of log files than the Clojure Collector
+* All AWS services used are setup in the US-East-1 region (the price of each AWS service varies by region)
+* The CloudFront Collector is used (rather than the Clojure Collector). This reduces EC2 and EBS costs, but increases S3 costs, because it generates a larger number of log files than the Clojure Collector
 * The Snowplow user tracks the same number of uniques and events each month
 
 ## Installing the package
@@ -47,7 +47,7 @@ Using the package is straightforward, you simply call the `snowplowCostByMonth` 
 
 The `snowplowCostByMonth` function takes the following arguments, all of which **must** be supplied:
 
-| ** Argument ** | ** Description ** |
+| Argument | Description |
 |:---------------|:------------------|
 | uniquesPerMonth| The number of uniques tracked per month [type: integer] |
 | eventsPerMonth | The number of events tracked per month [type: integer] |
