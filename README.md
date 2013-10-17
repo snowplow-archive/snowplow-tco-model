@@ -47,14 +47,14 @@ Using the package is straightforward, you simply call the `snowplowCostByMonth` 
 
 The `snowplowCostByMonth` function takes the following arguments, all of which **must** be supplied:
 
-| Argument | Description |
-|:---------------|:------------------|
-| uniquesPerMonth| The number of uniques tracked per month [type: integer] |
-| eventsPerMonth | The number of events tracked per month [type: integer] |
-| runsPerDay     | The number of times that the Enrichment process is run per day [type: integer] |
-| storageDatabase| The database that is used to store Snowplow data. This can be 'redshift' or 'postgres' [type: integer] |
-| numberOfMonths | The number of months that the model will run for |
-| edgeLocations  | This is the number of locations on the Amazon Cloudfront network that generate a log file each time one of the associated nodes is hit. We are not sure how many of these exist in the Cloudfront network. (We guess there are 10k - 100k). This impacts S3 costs, because it determines how many log files are generated in each time period, and a certain number of requests are made per log file generated. |
+| Argument       | Type    | Description                                      |
+|:---------------|:--------|:-------------------------------------------------|
+| uniquesPerMonth| integer | The number of uniques tracked per month          |
+| eventsPerMonth | integer | The number of events tracked per month           |
+| runsPerDay     | integer | The number of times that the Enrichment process is run per day |
+| storageDatabase| string  | The database that is used to store Snowplow data. This can be 'redshift' or 'postgres' |
+| numberOfMonths | integer | The number of months that the model will run for |
+| edgeLocations  | integer | This is the number of locations on the Amazon Cloudfront network that generate a log file each time one of the associated nodes is hit. We are not sure how many of these exist in the Cloudfront network. (We guess there are 10k - 100k). This impacts S3 costs, because it determines how many log files are generated in each time period, and a certain number of requests are made per log file generated. |
 
 For example, to find out how much Snowplow would cost for a user with 800k uniques per month, 5M events per month who uses PostgreSQL to store the data, we would run:
 
